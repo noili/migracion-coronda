@@ -1,0 +1,22 @@
+
+crear funcion para fecha de emision
+ver interes despues (otro dia)
+
+lista de contribuyentes con su domicilio armado
+
+direccion_correo_tgi tiene que tener todos los campos de tgi
+
+
+ACTIVI1     Chr      50    DRI Nombre de la activad comercial     
+IMPORD1     Num      12,2  Importe a pagar por esa actividad         
+ACTIVI2     Chr      50              
+IMPORD2     Num      12,2           
+ACTIVI3     Chr      50               
+IMPORD3     Num      12,2           
+ACTIVI4     Chr      50                  
+IMPORD4     Num      12,2           
+ACTIVI5     Chr      50                  
+IMPORD5     Num      12,2   
+va todo en blanco en TGI
+
+

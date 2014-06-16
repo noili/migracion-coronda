@@ -1,0 +1,5 @@
+select 
+    municipal.dreal (NOW(), p.vencimiento1, d.avaluo, d.categ, 0) as dreal
+from
+    municipal.dtgi d
+left join municipal.ptgi p on d.periodo = p.periodo
