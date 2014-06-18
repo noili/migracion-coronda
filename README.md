@@ -5,6 +5,8 @@ migracion de la base de datos municipalidad de Coronda
 
 ### TODO:
 
+deuda samco?
+
 completar publico ~ DRI
 
 checkear datos DRI, checkear en todas descripcion del cargo y monto
