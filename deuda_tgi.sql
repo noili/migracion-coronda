@@ -1,5 +1,5 @@
 select
-  t.catastral as Numero_partida_municipal, 
+  t.catastral as 'Numero partida municipal', 
   '01' as tributo,
   -- lpad(d.cuenta, 10, 0) as cuenta, 
   '1' as numero_de_recibo, 

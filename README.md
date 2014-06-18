@@ -5,8 +5,10 @@ migracion de la base de datos municipalidad de Coronda
 
 ### TODO:
 
-completar cementerio
+completar publico ~ DRI
 
-tgi ~ rural
+checkear datos DRI, checkear en todas descripcion del cargo y monto
 
-dri ~ publico
+checkear numero de partida municipal
+
+averiguar donde va el monto pagado
