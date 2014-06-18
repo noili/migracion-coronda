@@ -5,12 +5,5 @@ migracion de la base de datos municipalidad de Coronda
 
 ### TODO:
 
-deuda samco?
-
-completar publico ~ DRI
-
-checkear datos DRI, checkear en todas descripcion del cargo y monto
-
-checkear numero de partida municipal
-
-averiguar donde va el monto pagado
+La persona tiene declaradas varias actividades pero tiene un unico importe de 
+pago, por lo tanto, no puedo dividirlo. Asi que lo paso como un único valor. 

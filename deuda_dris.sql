@@ -1,15 +1,17 @@
 select
-  -- t.catastral as 'Numero partida municipal', 
-  '01' as tributo,
-  -- lpad(d.cuenta, 10, 0) as cuenta, 
+  d.cuenta as 'Numero partida municipal', 
+  '&1' as tributo, 
   '1' as numero_de_recibo, 
   municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado, 
   d.periodo as periodo, 
   DATE_SUB(p.vencimiento1,INTERVAL 10 DAY) as fecha_emision, 
   p.vencimiento1 as 'Fecha 1er vencimiento', 
   p.vencimiento2 as 'Fecha 2do vencimiento',
-  municipal.dreal(NOW(), p.vencimiento1, d.costo, 0, 0) - 
-  municipal.dreal(DATE_ADD(p.vencimiento1,INTERVAL 1 DAY), p.vencimiento1, d.costo, 0, 0) as 'interes resarcitorio',
+  round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.costo),2) as 'interes resarcitorio',
+  /*IF(d.f_pago is not null, 
+    municipal.dreal(d.f_pago, p.vencimiento1, d.costo, 0, 0), 
+    municipal.dreal(NOW(), p.vencimiento1, d.costo, 0, 0)) - 
+  municipal.dreal(DATE_ADD(p.vencimiento1,INTERVAL 1 DAY), p.vencimiento1, d.costo, 0, 0) as 'interes resarcitorio',*/
   '' as referencia, 
    
   dir.calle as calle,
@@ -51,7 +53,7 @@ select
   d.mosquito as mosquito,*/
   
   (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1) as activi1, 
-  IF (d.pago is not null, d.pago, null) as impord1,
+  round(IF (d.pago is not null, d.pago, null), 2) as impord1, 
   (select rubro_id from municipal.negocios n where d.rubro_id = n.dri_id limit 1 offset 2) as activi2, 
   '' as impord2,
   (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1 offset 3) as activi3, 
@@ -68,4 +70,3 @@ from municipal.deuda_dris d
   left join municipal.direccion_correo_dris dir on dir.id = d.id
   left join municipal.convenio con on con.cod = d.convenio
   left join municipal.judicial j on d.judicial = j.cod
--- where dir.calle != 0

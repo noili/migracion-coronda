@@ -7,8 +7,11 @@ select
   DATE_SUB(p.vencimiento1,INTERVAL 10 DAY) as fecha_emision, 
   p.vencimiento1 as 'Fecha 1er vencimiento', 
   p.vencimiento2 as 'Fecha 2do vencimiento',
-  municipal.dreal(NOW(), p.vencimiento1, d.avaluo, 0, 0) - 
-  municipal.dreal(DATE_ADD(p.vencimiento1,INTERVAL 1 DAY), p.vencimiento1, d.avaluo, 0, 0) as 'interes resarcitorio',
+  round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.avaluo) as 'interes resarcitorio',2),
+  /*IF(d.f_pago is not null, 
+    municipal.dreal(d.f_pago, p.vencimiento1, d.avaluo, 0, 0), 
+    municipal.dreal(NOW(), p.vencimiento1, d.avaluo, 0, 0))- 
+  municipal.dreal(DATE_ADD(p.vencimiento1,INTERVAL 1 DAY), p.vencimiento1, d.avaluo, 0, 0) as 'interes resarcitorio',*/
   '' as referencia, 
    
   dir.calle as calle,
@@ -35,19 +38,19 @@ select
   '' as TIPOANUL, 
   '' as FECHANUL,
   'tasa pura',
-  d.adicional + d.basico as 'tasa pura',
+  round(d.adicional + d.basico,2) as 'tasa pura',
   'baldio',
-  d.baldio as baldio,
+  round(d.baldio,2) as baldio,
   'BV',
-  d.BV as 'BV',
+  round(d.BV,2) as 'BV',
   'Th',
-  d.Th as Th,
+  round(d.Th,2) as Th,
   'Samco',
-  d.samco as samco,
+  round(d.samco,2) as samco,
   'gastos administrativos',
-  d.gadm as 'gastos administrativos',
+  round(d.gadm,2) as 'gastos administrativos',
   'mosquito',
-  d.mosquito as mosquito
+  round(d.mosquito,2) as mosquito
 
 from municipal.deuda_tgi d
   left join municipal.tgi t on d.cuenta = t.cod
@@ -55,4 +58,3 @@ from municipal.deuda_tgi d
   left join municipal.direccion_correo_tgi dir on dir.cod = d.cuenta
   left join municipal.convenio con on con.cod = d.convenio
   left join municipal.judicial j on d.judicial = j.cod
-limit 100

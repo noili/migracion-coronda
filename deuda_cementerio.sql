@@ -1,15 +1,13 @@
 select
-  -- t.catastral as Numero_partida_municipal, 
-  '01' as tributo,
-  -- lpad(d.cuenta, 10, 0) as cuenta, 
+  d.cuenta as Numero_partida_municipal, 
+  '03' as tributo, 
   '1' as numero_de_recibo, 
   municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado, 
   d.periodo as periodo, 
   DATE_SUB(p.vencimiento1,INTERVAL 10 DAY) as fecha_emision, 
   p.vencimiento1 as 'Fecha 1er vencimiento', 
   p.vencimiento2 as 'Fecha 2do vencimiento',
-  municipal.dreal(NOW(), p.vencimiento1, d.costo, 0, 0) - 
-  municipal.dreal(DATE_ADD(p.vencimiento1,INTERVAL 1 DAY), p.vencimiento1, d.costo, 0, 0) as 'interes resarcitorio',
+  round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.costo),2) as 'interes resarcitorio',
   '' as referencia, 
    
   dir.calle as calle,
@@ -35,20 +33,6 @@ select
   '' as NORANUL, 
   '' as TIPOANUL, 
   '' as FECHANUL
-  -- 'tasa pura',
-  -- d.adicional + d.basico as 'tasa pura',
-  -- 'baldio',
-  -- d.baldio as baldio,
-  -- 'BV',
-  -- d.BV as 'BV',
-  -- 'Th',
-  -- d.Th as Th,
-  -- 'Samco',
-  -- d.samco as samco,
-  -- 'gastos administrativos',
-  -- d.gadm as 'gastos administrativos',
-  -- 'mosquito',
-  -- d.mosquito as mosquito
 
 from municipal.deuda_cementerio d
   left join municipal.cementerio t on d.cuenta = t.cod
