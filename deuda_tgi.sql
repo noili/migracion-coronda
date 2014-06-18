@@ -1,7 +1,6 @@
 select
   t.catastral as 'Numero partida municipal', 
   '01' as tributo,
-  -- lpad(d.cuenta, 10, 0) as cuenta, 
   '1' as numero_de_recibo, 
   municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado, 
   d.periodo as periodo, 
@@ -49,8 +48,6 @@ select
   d.gadm as 'gastos administrativos',
   'mosquito',
   d.mosquito as mosquito
-  -- lpad(' ',320,' ') as 'activi importes', lpad(' ',176,' ') as 'cargo importe',
-  -- lpad(' ',10,' ') as FCOBRO, ' ' as STAFE, ' ' as DISCRI, ' ' as NOMBREI, ' ' as ERR_BOL
 
 from municipal.deuda_tgi d
   left join municipal.tgi t on d.cuenta = t.cod
@@ -58,4 +55,4 @@ from municipal.deuda_tgi d
   left join municipal.direccion_correo_tgi dir on dir.cod = d.cuenta
   left join municipal.convenio con on con.cod = d.convenio
   left join municipal.judicial j on d.judicial = j.cod
--- where dir.calle != 0
+limit 100
