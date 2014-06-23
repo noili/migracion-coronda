@@ -47,3 +47,4 @@ from municipal.drural d
   left join municipal.direccion_correo_rural dir on dir.cod = d.cuenta
   left join municipal.convenio con on con.cod = d.convenio
   left join municipal.judicial j on d.judicial = j.cod
+limit 10

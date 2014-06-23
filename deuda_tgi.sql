@@ -7,7 +7,7 @@ select
   DATE_SUB(p.vencimiento1,INTERVAL 10 DAY) as fecha_emision, 
   p.vencimiento1 as 'Fecha 1er vencimiento', 
   p.vencimiento2 as 'Fecha 2do vencimiento',
-  round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.avaluo) as 'interes resarcitorio',2),
+  round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.avaluo),2) as 'interes resarcitorio',
   /*IF(d.f_pago is not null, 
     municipal.dreal(d.f_pago, p.vencimiento1, d.avaluo, 0, 0), 
     municipal.dreal(NOW(), p.vencimiento1, d.avaluo, 0, 0))- 
