@@ -30,8 +30,8 @@ select
   'convenio' as 'nombre del tipo de convenio destino', 
   con.inicio as 'fecha convenio destino',
 
-  d.judicial as 'nro titulo ejecutorio', 
-  j.fecha as 'fecha titulo ejecutorio',
+  d.judicial as 'nro titulo ejecutorio',
+  /*j.fecha as 'fecha titulo ejecutorio',*/
    
   
   '' as NORANUL, 
@@ -57,4 +57,4 @@ from municipal.deuda_tgi d
   left join municipal.ptgi p on d.periodo = p.periodo
   left join municipal.direccion_correo_tgi dir on dir.cod = d.cuenta
   left join municipal.convenio con on con.cod = d.convenio
-  left join municipal.judicial j on d.judicial = j.cod
+  /*left join municipal.judicial j on d.judicial = j.cod*/
