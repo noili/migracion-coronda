@@ -3,6 +3,18 @@ migracion-coronda
 
 migracion de la base de datos municipalidad de Coronda
 
+nombre de la empreza o razon social:
+Municipalidad de la ciudad de Coronda
+
+cuit:
+33-99901882-9
+
+direccion:
+Sarmiento 1818
+
+que tiene que decir la factura:
+migracion de datos en sql
+
 ### TODO:
 
 La persona tiene declaradas varias actividades pero tiene un unico importe de 
@@ -21,11 +33,9 @@ pago, por lo tanto, no puedo dividirlo. Asi que lo paso como un único valor.
  7  Fecha 1er Vencimiento ( Formato : dd/mm/aa )
  8  Fecha 2do Vencimiento ( Formato : dd/mm/aa )
  9  Interes resarcitorio (Formato 999999.99 )
- TODO: falta redondear
  10 Referencia ( Max 100 Characteres )
 
  11 Nombre Calle ( Dirección de entrega )
- TODO: cambiar a nombre
  12 Altura ( Dirección de entrega )
  13 Piso ( Dirección de entrega )
  14 Dpto ( Dirección de entrega )
@@ -47,7 +57,7 @@ pago, por lo tanto, no puedo dividirlo. Asi que lo paso como un único valor.
  24 Número Anulación-Prescripción
  25 Tipo de Anulación-Prescripción
  25 Fecha de Anulación Prescripción
- TODO: si baja > 0 esta anulada, sale de d.baja
+ q? Numero Anulacion es un estado T o F
 
  26 Descripción del Cargo
  27 Importe del Cargo
