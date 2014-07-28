@@ -14,7 +14,8 @@ select
   municipal.dreal(DATE_ADD(p.vencimiento1,INTERVAL 1 DAY), p.vencimiento1, d.costo, 0, 0) as 'interes resarcitorio',*/
   '' as referencia, 
    
-  dir.calle as calle,
+  -- dir.calle as calle,
+  c.name as calle,
   dir.altura as altura,
   dir.piso as piso,
   dir.dpto as dpto, 
@@ -26,12 +27,12 @@ select
   '' as 'fecha convenio origen',
 
   d.convenio as 'nro convenio destino',
-  ' ' as 'descripcion convenio destino', 
+  '' as 'descripcion convenio destino', 
   'convenio' as 'nombre del tipo de convenio destino', 
   con.inicio as 'fecha convenio destino',
 
-  d.judicial as 'nro titulo ejecutorio', 
-  j.fecha as 'fecha titulo ejecutorio',
+  '' as 'nro titulo ejecutorio', 
+  '' as 'fecha titulo ejecutorio',
    
   
   '' as NORANUL, 
@@ -69,4 +70,6 @@ from municipal.deuda_dris d
   left join municipal.pdris p on d.periodo = p.periodo
   left join municipal.direccion_correo_dris dir on dir.id = d.id
   left join municipal.convenio con on con.cod = d.convenio
-  left join municipal.judicial j on d.judicial = j.cod
+  -- left join municipal.judicial j on d.judicial = j.cod
+  left join municipal.calles c on dir.calle = c.id
+limit 100
