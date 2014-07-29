@@ -1,6 +1,6 @@
 select
   if(t.cod,t.cod,'') as 'Numero partida municipal',
-  '01' as tributo,
+  '05' as tributo,
   '1' as numero_de_recibo, 
   municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado, 
   if(d.periodo,d.periodo,'') as periodo,
@@ -18,10 +18,15 @@ select
   if(dir.localidad,dir.localidad,'') as localidad,
   
   
-  '' as 'nro convenio origen',
-  '' as 'descripcion convenio origen', 
+  d.impu as 'nro convenio origen',
+  CASE d.tipo
+    when 0 THEN 'tgi'
+    when 2 THEN 'rural'
+    when 4 THEN 'catastro'
+    ELSE ''
+  END as 'descripcion convenio origen', 
   '' as 'nombre del tipo de convenio origen', 
-  '' as 'fecha convenio origen',
+  d.inicio as 'fecha convenio origen',
 
   '' as 'nro convenio destino',
   '' as 'descripcion convenio destino', 
