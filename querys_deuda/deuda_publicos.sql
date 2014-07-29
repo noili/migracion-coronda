@@ -7,34 +7,28 @@ select
   DATE_SUB(p.vencimiento1,INTERVAL 10 DAY) as fecha_emision, 
   p.vencimiento1 as 'Fecha 1er vencimiento', 
   p.vencimiento2 as 'Fecha 2do vencimiento',
-  ROUND(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.costo),2) as 'interes resarcitorio',
-  /*IF(d.f_pago is not null, 
-      municipal.dreal(d.f_pago, p.vencimiento1, d.costo, 0, 0), 
-      municipal.dreal(NOW(), p.vencimiento1, d.costo, 0, 0))- 
-    municipal.dreal(DATE_ADD(p.vencimiento1,INTERVAL 1 DAY), p.vencimiento1, d.costo, 0, 0)
-      as 'interes resarcitorio',*/
-  /*municipal.dreal(NOW(), p.vencimiento1, d.costo, 0, 0) - 
-  municipal.dreal(DATE_ADD(p.vencimiento1,INTERVAL 1 DAY), p.vencimiento1, d.costo, 0, 0) as 'interes resarcitorio',*/
+  round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.costo90,d.costoreal,d.pago),2) as 'interes resarcitorio',
+  
   '' as referencia, 
    
-  dir.calle as calle,
-  dir.altura as altura,
-  dir.piso as piso,
-  dir.dpto as dpto, 
-  dir.localidad as localidad,
+  if(c.name,c.name,'') as calle,
+  if(dir.altura,dir.altura,'') as altura,
+  if(dir.piso,dir.piso,'') as piso,
+  if(dir.dpto,dir.dpto,'') as dpto, 
+  if(dir.localidad,dir.localidad,'') as localidad,
   
   '' as 'nro convenio origen',
   '' as 'descripcion convenio origen', 
   '' as 'nombre del tipo de convenio origen', 
   '' as 'fecha convenio origen',
 
-  d.convenio as 'nro convenio destino',
-  ' ' as 'descripcion convenio destino', 
-  'convenio' as 'nombre del tipo de convenio destino', 
-  con.inicio as 'fecha convenio destino',
+  '' as 'nro convenio destino',
+  '' as 'descripcion convenio destino', 
+  '' as 'nombre del tipo de convenio destino', 
+  '' as 'fecha convenio destino',
 
-  d.judicial as 'nro titulo ejecutorio', 
-  j.fecha as 'fecha titulo ejecutorio',
+  '' as 'nro titulo ejecutorio',
+  '' as 'fecha titulo ejecutorio',
    
   
   '' as NORANUL, 
@@ -42,34 +36,15 @@ select
   '' as FECHANUL,
   'tasa',
   round(d.costo,2) as 'tasa',
-  /*'baldio',
-  d.baldio as baldio,
-  'BV',
-  d.BV as 'BV',
-  'Th',
-  d.Th as Th,
-  'Samco',
-  d.samco as samco,
-  'gastos administrativos',
-  d.gadm as 'gastos administrativos',
-  'mosquito',
-  d.mosquito as mosquito,*/
   
   (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1) as activi1, 
   round(IF (d.pago is not null, d.pago, null),2) as impord1
-  /*(select rubro_id from municipal.negocios n where d.rubro_id = n.dri_id limit 1 offset 2) as activi2, 
-  '' as impord2,
-  (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1 offset 3) as activi3, 
-  '' as impord3,
-  (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1 offset 4) as activi4, 
-  '' as impord4,
-  (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1 offset 5) as activi5, 
-  '' as impord5,
-  (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1 offset 6) as activi6, 
-  '' as impord6*/
+
 from municipal.deuda_publicos d
   -- left join municipal.dris t on d.cuenta = t.id
   left join municipal.pdris p on d.periodo = p.periodo
   left join municipal.direccion_correo_dris dir on dir.id = d.rubro_id
   left join municipal.convenio con on con.cod = d.convenio
   left join municipal.judicial j on d.judicial = j.cod
+  left join municipal.calles c on dir.calle = c.id
+limit 100

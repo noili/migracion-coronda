@@ -8,11 +8,8 @@ select
   DATE_SUB(p.vencimiento1,INTERVAL 10 DAY) as fecha_emision, 
   p.vencimiento1 as 'Fecha 1er vencimiento', 
   p.vencimiento2 as 'Fecha 2do vencimiento',
-  round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.avaluo),2) as 'interes resarcitorio',
-  /*IF(d.f_pago is not null, 
-    municipal.dreal(d.f_pago, p.vencimiento1, d.avaluo, 0, 0), 
-    municipal.dreal(NOW(), p.vencimiento1, d.avaluo, 0, 0))- 
-  municipal.dreal(DATE_ADD(p.vencimiento1,INTERVAL 1 DAY), p.vencimiento1, d.avaluo, 0, 0) as 'interes resarcitorio',*/
+  round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.costo90,d.costoreal,d.pago),2) as 'interes resarcitorio',
+
   '' as referencia, 
    
   -- dir.calle as calle,
@@ -36,7 +33,7 @@ select
   if(j.fecha,j.fecha,'') as 'fecha titulo ejecutorio',
    
   
-  if(d.borrada,d.borrada,'') as NORANUL, 
+  if(d.borrada,d.borrada,'') as NROANUL, 
   '' as TIPOANUL, 
   '' as FECHANUL,
   'tasa pura',
@@ -61,5 +58,4 @@ from municipal.deuda_tgi d
   left join municipal.convenio con on d.convenio = con.cod 
   left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
--- where dir.dpto = 'null'
 limit 100
