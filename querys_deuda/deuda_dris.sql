@@ -48,18 +48,18 @@ select
   'mosquito',
   d.mosquito as mosquito,*/
   
-  (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1) as activi1, 
-  round(IF (d.pago is not null, d.pago, null), 2) as impord1, 
-  (select rubro_id from municipal.negocios n where d.rubro_id = n.dri_id limit 1 offset 2) as activi2, 
+  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1) as activi1, 
+  round(IF (d.pago is not null, d.pago, ''), 2) as impord1, 
+  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 2) as activi2, 
   '' as impord2,
-  (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1 offset 3) as activi3, 
+  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 3) as activi3, 
   '' as impord3,
-  (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1 offset 4) as activi4, 
-  '' as impord4,
-  (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1 offset 5) as activi5, 
-  '' as impord5,
-  (select rubro_id from municipal.negocios n where d.rubro_id  = n.dri_id limit 1 offset 6) as activi6, 
-  '' as impord6
+  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 4) as activi4, 
+  '' as impord4
+  -- (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 5) as activi5, 
+  -- '' as impord5,
+  -- (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 6) as activi6, 
+  -- '' as impord6
 from municipal.deuda_dris d
   left join municipal.dris t on d.cuenta = t.id
   left join municipal.pdris p on d.periodo = p.periodo
@@ -67,4 +67,4 @@ from municipal.deuda_dris d
   left join municipal.convenio con on con.cod = d.convenio
   -- left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
-limit 1000
+  group by d.cuenta, d.periodo
