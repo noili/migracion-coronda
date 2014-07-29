@@ -1,6 +1,6 @@
 select
   if(t.catastral,t.catastral,'') as 'Numero partida municipal',
-  '01' as tributo,
+  '04' as tributo,
   '1' as numero_de_recibo, 
   municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado, 
   if(d.periodo,d.periodo,'') as periodo,
