@@ -1,5 +1,5 @@
 select
-  d.pago, d.CostoReal,costo90,
+  #d.pago, d.CostoReal,costo90,
   d.cuenta as 'Numero partida municipal', 
   '03' as tributo, 
   '1' as 'numero de recibo', 
@@ -46,6 +46,5 @@ from municipal.deuda_cementerio d
   left join municipal.convenio con on con.cod = d.convenio
   left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
-where d.pago is not null and d.periodo = 201206
 limit 100
 

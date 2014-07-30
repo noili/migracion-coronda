@@ -38,7 +38,7 @@ select
   round(d.costo,2) as 'tasa',
   
   (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1) as activi1, 
-  round(IF (d.pago is not null, d.pago, null),2) as impord1
+  round(IF (d.pago is not null, d.pago, ''),2) as impord1
 
 from municipal.deuda_publicos d
   -- left join municipal.dris t on d.cuenta = t.id

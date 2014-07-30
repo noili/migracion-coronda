@@ -4,9 +4,9 @@ select
   '1' as numero_de_recibo, 
   municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado, 
   if(d.periodo,d.periodo,'') as periodo,
-  DATE_SUB(p.vencimiento1,INTERVAL 10 DAY) as fecha_emision, 
-  p.vencimiento1 as 'Fecha 1er vencimiento', 
-  p.vencimiento2 as 'Fecha 2do vencimiento',
+  if(p.vencimiento1,DATE_SUB(p.vencimiento1,INTERVAL 10 DAY),'') as fecha_emision, 
+  if(p.vencimiento1, p.vencimiento1, '') as 'Fecha 1er vencimiento', 
+  if(p.vencimiento2, p.vencimiento2, '') as 'Fecha 2do vencimiento',
   round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.costo90,d.costoreal,d.pago),2) as 'interes resarcitorio',
   '' as referencia, 
    
@@ -68,3 +68,4 @@ from municipal.deuda_dris d
   -- left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
   group by d.cuenta, d.periodo
+limit 100
