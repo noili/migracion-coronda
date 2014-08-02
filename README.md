@@ -19,6 +19,12 @@ migracion de datos en sql
 
 ### TODO:
 
+hacer la migracion de los negocios.
+
+hacer bromatologia.
+
+las tablas verlas en foxpro, acces o algo asi.
+
 La persona tiene declaradas varias actividades pero tiene un unico importe de 
 pago, por lo tanto, no puedo dividirlo. Asi que lo paso como un único valor. 
 
@@ -96,3 +102,50 @@ Solo para recibos del DREI
  55 Importe del la Actividad
  56 Descripción de la Actividad
  57 Importe del la Actividad
+ 
+ 
+ 
+### COMERCIOS
+
+
+Hola federico, la vez pasada no te pase todas las estructuras, ahi van:
+
+-Se puede trasladar desde el sistema anterior respetando el formato de
+transferencia.
+
+Nombre del archivo N:\PS-IO\IMPOR\COMERCIOS.TXT
+Todos los campos deben estar separados por ';'
+Definiciones de campos:
+ 1  Tipo de documento (Max 1 pos.)(5-CUIT – Ver Tabla)
+ 2  Número de documento (Max 12 pos.)
+ 3  Nombre fantasía (Max 50 Pos)
+ 4  Nombre Legal (Max 50 Pos)
+ 5  Teléfono (Max 30 Pos)
+ 6  Nro de cuenta.
+ 7  Mail (Max 50 Pos)
+ 8  Nombre de la calle (Max 30 Pos)
+ 9  Numero-Altura (Max 6 Pos)
+ 10 Numero de piso (Max 2 Pos)
+ 11 Numero de departamento (Max 4 Pos)
+ 12 Nombre de la localidad ( Max 30 Pos )
+ 13 Numero del API (Max 10 Pos)
+ 14 Fecha Inicio de Actividades (8 Pos dd/mm/aa)
+ 15 Perfil fiscal (Max 30 Pos) (Ver Tabla)
+ 16 Tipo de Sociedad (Max 30 Pos) (Ver Tabla)
+ 17 Régimen Convenio Multilateral (1 Pos) (S/N)
+ 18 Tipo de Empresa (Max 30 Pos) (Ver Tabla)
+ 19 Tamaño de Empresa (Max 30 Pos) (Ver Tabla)
+ 20 Cantidad Titulares (Max 3 Pos)
+ 21 Cantidad Empleados (Max 3 Pos)
+ 22 Cadena Comercial (1 Pos) (S/N)
+ 23 Código Cuenta DReI (Max 8 Pos)
+ 24 Fecha Emisión DReI (8 Pos dd/mm/aa)
+
+EJE ( N:\ps-io\impor\COMERCIOS.TXT ) :  Archivo Ejemplo
+1;20135236584;FERRETERIA JUAN;PERES
+JUAN;0342-222547;;FERRETERIAJUAN@GMAIL.COM;LAPRIDA;2134;;;SANTA
+FE;1234567890;01/01/95;Responsable Inscripto;S.A.;N;COMERCIO;CHICO;1;11;N
+
+Al realizar la importación el sistema crea la  dirección en forma automática
+y si es necesario dará de alta la calle, localidad, Tipo de sociedad, perfil
+fiscal, tipo empresa, Tamaño empresa
