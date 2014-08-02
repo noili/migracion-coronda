@@ -33,9 +33,10 @@ select
   '' as NORANUL, 
   '' as TIPOANUL, 
   '' as FECHANUL,
-  /*'tasa pura',
-  d.adicional + d.basico as 'tasa pura',
-  'baldio',
+
+  'cargo',
+  round(IF (d.pago is not null, d.pago, ''), 2) as impord1,
+  /*'baldio',
   d.baldio as baldio,
   'BV',
   d.BV as 'BV',
@@ -68,4 +69,3 @@ from municipal.deuda_dris d
   -- left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
   group by d.cuenta, d.periodo
-limit 100
