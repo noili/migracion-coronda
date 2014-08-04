@@ -22,6 +22,7 @@ select
   c.personal  as 'cantidad de empleados',
   '' as 'cadena comercial',
   d.id as 'codigo cuenta Drei'
+  
  
 from municipal.negocios n
   left join municipal.dris d on n.dri_id = d.id
