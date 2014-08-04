@@ -31,12 +31,9 @@ pago, por lo tanto, no puedo dividirlo. Asi que lo paso como un único valor.
 
  1  Número de Partida municipal
  2  Tributo ( Ver Tabla ) 
- q? preguntarle donde esta la tabla
  3  Número de recibo ( Max 10 Pos ) 
- q? (hay uno solo por impresion)
  4  Estado ( A-Activa , T-Pagas , N-Anuladas )
  5  Periodo ( Eje : Enero-13 )
- q? El formato es aaaamm 
  6  Fecha emisión ( Formato : dd/mm/aa )
  7  Fecha 1er Vencimiento ( Formato : dd/mm/aa )
  8  Fecha 2do Vencimiento ( Formato : dd/mm/aa )
@@ -65,7 +62,6 @@ pago, por lo tanto, no puedo dividirlo. Asi que lo paso como un único valor.
  24 Número Anulación-Prescripción
  25 Tipo de Anulación-Prescripción
  25 Fecha de Anulación Prescripción
- q? Numero Anulacion es un estado T o F
 
  26 Descripción del Cargo
  27 Importe del Cargo
@@ -129,17 +125,25 @@ Definiciones de campos:
  11 Numero de departamento (Max 4 Pos)
  12 Nombre de la localidad ( Max 30 Pos )
  13 Numero del API (Max 10 Pos)
+q? numero del API
  14 Fecha Inicio de Actividades (8 Pos dd/mm/aa)
  15 Perfil fiscal (Max 30 Pos) (Ver Tabla)
+no esta el dato
  16 Tipo de Sociedad (Max 30 Pos) (Ver Tabla)
+no esta el dato
  17 Régimen Convenio Multilateral (1 Pos) (S/N)
+q?
  18 Tipo de Empresa (Max 30 Pos) (Ver Tabla)
+no tengo la tabla.
  19 Tamaño de Empresa (Max 30 Pos) (Ver Tabla)
+no tengo la tabla
  20 Cantidad Titulares (Max 3 Pos)
+hay 1 solo
  21 Cantidad Empleados (Max 3 Pos)
  22 Cadena Comercial (1 Pos) (S/N)
  23 Código Cuenta DReI (Max 8 Pos)
  24 Fecha Emisión DReI (8 Pos dd/mm/aa)
+q?
 
 EJE ( N:\ps-io\impor\COMERCIOS.TXT ) :  Archivo Ejemplo
 1;20135236584;FERRETERIA JUAN;PERES
