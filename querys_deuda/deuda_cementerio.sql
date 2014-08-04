@@ -1,5 +1,4 @@
 select
-  #d.pago, d.CostoReal,costo90,
   d.cuenta as 'Numero partida municipal', 
   '03' as tributo, 
   '1' as 'numero de recibo', 
@@ -8,11 +7,9 @@ select
   DATE_SUB(p.vencimiento1,INTERVAL 10 DAY) as fecha_emision, 
   p.vencimiento1 as 'Fecha 1er vencimiento', 
   p.vencimiento2 as 'Fecha 2do vencimiento',
-  -- round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.costo),2) as 'interes resarcitorio',
   round(municipal.calcular_interes(d.f_pago, p.vencimiento1,d.costo90,d.costoreal,d.pago),2) as 'interes resarcitorio',
   '' as referencia, 
    
-  -- dir.calle as calle,
   if(c.name,c.name,'') as calle,
   if(dir.altura,dir.altura,'') as altura,
   if(dir.piso,dir.piso,'') as piso,

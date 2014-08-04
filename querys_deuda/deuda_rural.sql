@@ -1,7 +1,6 @@
 select
   t.catastral as 'Numero partida municipal', 
   '02' as tributo,
-  -- lpad(d.cuenta, 10, 0) as cuenta, 
   '1' as numero_de_recibo, 
   municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado, 
   if(d.periodo,d.periodo,'') as periodo,
@@ -35,6 +34,7 @@ select
   '' as NORANUL, 
   '' as TIPOANUL, 
   '' as FECHANUL,
+
   'tasa',
   round(d.costo,2) as 'tasa'
 

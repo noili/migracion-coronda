@@ -1,6 +1,5 @@
 select
   d.cuenta as cuenta,
-  -- if(t.catastral,t.catastral,'') as 'Numero partida municipal', 
   '01' as tributo,
   '1' as numero_de_recibo, 
   municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado, 
@@ -12,7 +11,6 @@ select
 
   '' as referencia, 
    
-  -- dir.calle as calle,
   if(c.name,c.name,'') as calle,
   if(dir.altura,dir.altura,'') as altura,
   if(dir.piso,dir.piso,'') as piso,
@@ -58,4 +56,3 @@ from municipal.deuda_tgi d
   left join municipal.convenio con on d.convenio = con.cod 
   left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
-limit 100

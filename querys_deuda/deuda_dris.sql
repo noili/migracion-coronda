@@ -1,6 +1,6 @@
 select
   d.cuenta as 'Numero partida municipal', 
-  '&1' as tributo, 
+  '04' as tributo, 
   '1' as numero_de_recibo, 
   municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado, 
   if(d.periodo,d.periodo,'') as periodo,
@@ -26,6 +26,7 @@ select
   '' as 'descripcion convenio destino', 
   'convenio' as 'nombre del tipo de convenio destino', 
   if(con.inicio,con.inicio,'') as 'fecha convenio destino',
+
   '' as 'nro titulo ejecutorio', 
   '' as 'fecha titulo ejecutorio',
    
@@ -36,31 +37,16 @@ select
 
   'cargo',
   round(IF (d.pago is not null, d.pago, ''), 2) as impord1,
-  /*'baldio',
-  d.baldio as baldio,
-  'BV',
-  d.BV as 'BV',
-  'Th',
-  d.Th as Th,
-  'Samco',
-  d.samco as samco,
-  'gastos administrativos',
-  d.gadm as 'gastos administrativos',
-  'mosquito',
-  d.mosquito as mosquito,*/
   
   (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1) as activi1, 
-  round(IF (d.pago is not null, d.pago, ''), 2) as impord1, 
+  '' as impord1, 
   (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 2) as activi2, 
   '' as impord2,
   (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 3) as activi3, 
   '' as impord3,
   (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 4) as activi4, 
   '' as impord4
-  -- (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 5) as activi5, 
-  -- '' as impord5,
-  -- (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 6) as activi6, 
-  -- '' as impord6
+
 from municipal.deuda_dris d
   left join municipal.dris t on d.cuenta = t.id
   left join municipal.pdris p on d.periodo = p.periodo
