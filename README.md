@@ -134,9 +134,9 @@ no esta el dato
  17 Régimen Convenio Multilateral (1 Pos) (S/N)
 q?
  18 Tipo de Empresa (Max 30 Pos) (Ver Tabla)
-no tengo la tabla.
+no esta el dato
  19 Tamaño de Empresa (Max 30 Pos) (Ver Tabla)
-no tengo la tabla
+no esta el dato
  20 Cantidad Titulares (Max 3 Pos)
 hay 1 solo
  21 Cantidad Empleados (Max 3 Pos)
