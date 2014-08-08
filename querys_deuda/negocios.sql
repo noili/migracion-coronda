@@ -5,6 +5,7 @@ select
     when 5 THEN 'CUIT'
     ELSE ''
   END as 'tipo de documento',
+
   if(c.nro_doc,c.nro_doc,'') as 'documento',
   if(n.name,n.name,'') as 'nombre fantasia',
   '' as 'nombre real',
@@ -16,10 +17,10 @@ select
   if(dir.dpto,dir.dpto,'') as 'departamento',
   if(l.name,l.name,'') as 'localidad',
 
-  '' as 'numero del API',
+  REPLACE(c.ingresos,'-','') as 'numero del API',
   if(n.alta,n.alta,'') as 'fecha inicio actividades',
   -- if(r.name,r.name,'') as 'perfil fiscal',
-  CASE 6
+  CASE 3
     when 1 THEN 'RESPONSABLE INSCRIPTO'
     when 2 THEN 'MONOTRIBUTO RESP. SOCIAL'
     when 3 THEN 'CONSUMIDOR FINAL'
@@ -37,10 +38,17 @@ select
     ELSE ''
   END as 'tipo sociedad',
 
-  '' as 'regimen convenio multilateral', 
-  '' as 'tipo de empresa',
-  -- '' as 'tamaño de la empresa',
+  'no' as 'regimen convenio multilateral', 
+  -- '' as 'tipo de empresa',
+  CASE 6
+    when '1' THEN 'Industria'
+    when '2' THEN 'Comercio'
+    when '3' THEN 'Servicio'
+    when '4' THEN 'Prmario'
+    ELSE ''
+  END as 'tipo sociedad',
 
+  -- '' as 'tamaño de la empresa',
   CASE 6
     when 1 THEN 'Chico'
     when 2 THEN 'Mediano'
@@ -50,8 +58,9 @@ select
 
   1 as 'cantidad de titulares',
   c.personal  as 'cantidad de empleados',
-  '' as 'cadena comercial',
-  d.id as 'codigo cuenta Drei'
+  'no' as 'cadena comercial',
+  d.id as 'codigo cuenta Drei',
+  if(n.alta,n.alta,'') as 'fecha emision Drei'
   
 from municipal.negocios n
   left join municipal.dris d on n.dri_id = d.id
