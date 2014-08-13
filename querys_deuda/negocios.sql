@@ -1,12 +1,9 @@
 select 
-  -- if(c.t_doc,c.t_doc,'') as 'tipo de documento',
-  CASE c.t_doc
-    when 0 THEN 'DNI'
-    when 5 THEN 'CUIT'
-    ELSE ''
-  END as 'tipo de documento',
 
-  if(c.nro_doc,c.nro_doc,'') as 'documento',
+  if(length(c.cuit) > 9,5,if(c.nro_doc,1,'')) as 'tipo de documento',
+
+  if(c.cuit,c.cuit,if(c.nro_doc,c.nro_doc,'')) as 'documento',
+
   if(n.name,n.name,'') as 'nombre fantasia',
   '' as 'nombre real',
   if(c.telefono,c.telefono,'') as 'telefono',
