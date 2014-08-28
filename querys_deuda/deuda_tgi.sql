@@ -53,6 +53,7 @@ from municipal.deuda_tgi d
   left join municipal.tgi t on d.cuenta = t.cod
   left join municipal.ptgi p on d.periodo = p.periodo
   left join municipal.direccion_correo_tgi dir on d.cuenta = dir.cod
-  left join municipal.convenio con on d.convenio = con.cod 
+  left join municipal.convenio con on d.convenio = con.cod
   left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
+limit 40000

@@ -1,8 +1,8 @@
 select
-  t.catastral as 'Numero partida municipal', 
+  t.cod as 'Numero partida municipal',
   '02' as tributo,
-  '1' as numero_de_recibo, 
-  municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado, 
+  '1' as numero_de_recibo,
+  municipal.estado(d.pago,d.convenio,d.judicial,d.borrada,d.cancelada) as estado,
   if(d.periodo,d.periodo,'') as periodo,
   DATE_SUB(p.vencimiento1,INTERVAL 10 DAY) as fecha_emision, 
   p.vencimiento1 as 'Fecha 1er vencimiento', 
@@ -45,4 +45,3 @@ from municipal.deuda_rural d
   left join municipal.convenio con on con.cod = d.convenio
   left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
-limit 100
