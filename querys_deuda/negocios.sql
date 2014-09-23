@@ -4,7 +4,8 @@ select
 
   if(c.cuit,c.cuit,if(c.nro_doc,c.nro_doc,'')) as 'documento',
 
-  if(n.name,n.name,'') as 'nombre fantasia',
+  -- if(n.name,n.name,'') as 'nombre fantasia',
+  n.name as 'nombre fantasia',
   '' as 'nombre real',
   if(c.telefono,c.telefono,'') as 'telefono',
   if(c.email,c.email,'') as 'email',
