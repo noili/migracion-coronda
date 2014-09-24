@@ -22,11 +22,11 @@ migracion de datos en sql
 1. sacar las cuentas que esten dadas de baja en tgi
 
 2. terminar cementerio
-    {Nota (Caracteristica - Fila/cuadrado - Numero - codigo de seccion #{SA})}
+    {Nota (Caracteristica - Fila/cuadrado - Numero - codigo de seccion {SA})}
     sacar las cuentas que estan dadas de baja
-    20 - Estado (A - activo y exentos, N - baja) (agregarlo en el padron de 
+    20 - Estado (A - activo y exentos, N - baja) (agregarlo en el padron de
       negocios)
-    cd 
+
 3. migrar con estado() corregido
 
 
