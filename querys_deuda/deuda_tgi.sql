@@ -56,4 +56,4 @@ from municipal.deuda_tgi d
   left join municipal.convenio con on d.convenio = con.cod
   left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
-limit 40000
+   where t.baja != 1
