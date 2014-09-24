@@ -23,7 +23,5 @@ from municipal.cementerio c
   left join municipal.contribuyentes contri on c.contri = contri.id
   left join municipal.contribuyentes contri2 on c.contri2 = contri2.id
   left join municipal.direcciones_contribuyentes dir on c.contri = dir.id
-  left join municipal.direcciones_contribuyentes dir2 on c.contri2 = dir.id
-    where c.baja != 1
-limit 1000
+  left join municipal.direcciones_contribuyentes dir2 on c.contri2 = dir2.id
   
