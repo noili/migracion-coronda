@@ -51,4 +51,4 @@ from municipal.deuda_convenio d
   left join municipal.convenio con on con.cod = d.convenio
   left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
-limit 100
+where d.tipo = 0
