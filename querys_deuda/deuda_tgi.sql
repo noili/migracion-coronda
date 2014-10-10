@@ -32,22 +32,24 @@ select
    
   
   if(d.borrada,d.borrada,'') as NROANUL, 
-  '' as TIPOANUL, 
+  '' as TIPOANUL,
   '' as FECHANUL,
   'tasa pura',
-  round((d.adicional + d.basico) * (1 - d.descuento_procentaje/100),2) as 'tasa pura',
+  round((d.adicional + d.basico),2) as 'tasa pura',
   'baldio',
-  round(d.baldio * (1 - d.descuento_procentaje/100),2) as baldio,
+  round(d.baldio,2) as baldio,
   'BV',
-  round(d.BV,2 * (1 - d.descuento_procentaje/100)) as 'BV',
+  round(d.BV,2) as 'BV',
   'Th',
-  round(d.Th,2 * (1 - d.descuento_procentaje/100)) as Th,
+  round(d.Th,2) as Th,
   'Samco',
-  round(d.samco,2 * (1 - d.descuento_procentaje/100)) as samco,
+  round(d.samco,2) as samco,
   'gastos administrativos',
-  round(d.gadm,2 * (1 - d.descuento_procentaje/100)) as 'gastos administrativos',
+  round(d.gadm,2) as 'gastos administrativos',
   'mosquito',
-  round(d.mosquito,2 * (1 - d.descuento_procentaje/100)) as mosquito
+  round(d.mosquito,2) as mosquito,
+  'descuento',
+  round(d.descuento,2) as descuento
 
 from municipal.deuda_tgi d
   left join municipal.tgi t on d.cuenta = t.cod
