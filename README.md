@@ -29,5 +29,17 @@ migracion de datos en sql
 
 3. migrar con estado() corregido
 
+Las cuotas q genero un convenio
 
+No vemos los recibos que genero el convenio
 
+recibos activos, pagos y anulados
+
+boletas que genero ese convenio
+
+0349615542272
+hugotheler@gmail.com
+
+saber si efectivamente se pueden pasar las boletas (recibo) que genero un convenio
+
+marcar con una c los recibos que estan dentro del titulo ejecutoria (estado)
