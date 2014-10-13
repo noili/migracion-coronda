@@ -23,8 +23,8 @@ select
   '' as 'fecha convenio origen',
 
   if(d.convenio,d.convenio,'') as 'nro convenio destino',
-  '' as 'descripcion convenio destino', 
-  'convenio' as 'nombre del tipo de convenio destino', 
+  '' as 'descripcion convenio destino',
+  if(d.convenio,'convenio','') as 'nombre del tipo de convenio destino',
   if(con.inicio,con.inicio,'') as 'fecha convenio destino',
 
   if(d.judicial,d.judicial,'') as 'nro titulo ejecutorio',
