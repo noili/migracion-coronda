@@ -17,8 +17,6 @@ Sarmiento 1818
 que tiene que decir la factura:
 migracion de datos en sql
 
-### TODO:
-
 1. sacar las cuentas que esten dadas de baja en tgi
 
 2. terminar cementerio
@@ -43,3 +41,14 @@ hugotheler@gmail.com
 saber si efectivamente se pueden pasar las boletas (recibo) que genero un convenio
 
 marcar con una c los recibos que estan dentro del titulo ejecutoria (estado)
+
+### TODO:
+
+Convenio: se cobra el 20% sobre el total como anticipo
+
+    descuento:
+    si tenia un convenio preexistente que pago parte
+    si es empleado municipal o algo asi tambien tiene un descuento
+    
+    importe: arreglo de las cuotas.
+
