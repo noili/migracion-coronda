@@ -55,4 +55,3 @@ from municipal.deuda_dris d
   -- left join municipal.judicial j on d.judicial = j.cod
   left join municipal.calles c on dir.calle = c.id
   group by d.cuenta, d.periodo
-limit 20000
