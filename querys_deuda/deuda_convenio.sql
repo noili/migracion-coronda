@@ -43,6 +43,10 @@ select
   
   'tasa' as tasa,
   d.costo as tasa
+/*  'anticipo' as anticipo,
+  d.anticipo as anticipo,
+  'descuento',
+  if(d.descuento != 0, round((-1) * d.descuento,2), 0) as descuento*/
 
 from municipal.deuda_convenio d
   left join municipal.convenio t on d.cuenta = t.cod
