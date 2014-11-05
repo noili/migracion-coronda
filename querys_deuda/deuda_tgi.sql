@@ -49,7 +49,7 @@ select
   'mosquito',
   round(d.mosquito,2) as mosquito,
   'descuento',
-  round(d.descuento,2) as descuento
+  if(d.descuento != 0, round((-1) * d.descuento,2), 0) as descuento
 
 from municipal.deuda_tgi d
   left join municipal.tgi t on d.cuenta = t.cod
