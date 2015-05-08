@@ -38,13 +38,13 @@ select
   'cargo',
   round(IF (d.pago is not null, d.pago, ''), 2) as impord1,
   
-  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1) as activi1, 
-  '' as impord1, 
-  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 2) as activi2, 
+  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1) as activi1,
+  '' as impord1,
+  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 2) as activi2,
   '' as impord2,
-  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 3) as activi3, 
+  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 3) as activi3,
   '' as impord3,
-  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 4) as activi4, 
+  (select rubro_id from municipal.negocios n where d.cuenta = n.dri_id limit 1 offset 4) as activi4,
   '' as impord4
 
 from municipal.deuda_dris d

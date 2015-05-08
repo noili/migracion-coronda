@@ -36,7 +36,7 @@ select
   '' as FECHANUL,
 
   'tasa',
-  round(d.costo,2) as 'tasa'
+  round(d.costo * d.litro,2) as 'tasa'
 
 from municipal.deuda_rural d
   left join municipal.rural t on d.cuenta = t.cod
